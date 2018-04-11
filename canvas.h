@@ -47,6 +47,7 @@ public:
     //void undo( History &history);
     //void redo( History &history);
     void setDrawingMode(EPFrameBuffer::WaveformMode drawingMode);
+    void togglePen();
 
 
     static const int numColors = 17;

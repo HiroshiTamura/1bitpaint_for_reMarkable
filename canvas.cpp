@@ -17,7 +17,7 @@ Canvas::Canvas( int width ,int height ,QObject *parent) :
     penIndex = 0;
     pen[0].size = 33;
     pen[0].hard = 50;
-    pen[1].size = 60;
+    pen[1].size = 100;
     pen[1].hard = 50;
     color = 0;
 }
@@ -1423,14 +1423,21 @@ QImage *Canvas::createMonoImage( QImage &srcImage, QRect rect)
 void Canvas::setDrawingMode(EPFrameBuffer::WaveformMode drawingMode)
 {
     this->drawingMode = drawingMode;
-    if(drawingMode == EPFrameBuffer::WaveformMode::Mono){
-        penIndex = 0;
-    }
-    else{
-        penIndex = 1;
-    }
+
+    //if(drawingMode == EPFrameBuffer::WaveformMode::Mono){
+    //    penIndex = 0;
+    //}
+    //else{
+    //    penIndex = 1;
+    //}
+
+    //penIndex = (penIndex + 1) % 2;
 }
 
+void Canvas::togglePen()
+{
+    penIndex = (penIndex + 1) % 2;
+}
 
 int Canvas::mod(int x, int y)//剰余が負の数になってしまう事への対策
 {

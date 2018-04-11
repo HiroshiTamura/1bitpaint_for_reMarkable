@@ -12,6 +12,12 @@
 
 #include <epframebuffer.h>
 
+
+#include <fcntl.h>
+#include <stdio.h>
+#include <sys/time.h>
+#include <unistd.h>
+#include <linux/input.h>
 #include "canvas.h"
 #include "staticdata.h"
 
@@ -29,6 +35,7 @@ struct TabletData {
     qreal rotation;
     qreal tilt;
 };
+
 
 class MainWindow : public QMainWindow
 {
@@ -57,6 +64,7 @@ private:
 
     void draw();
     int mod(int x, int y);
+    void getRotateAndTilt(qreal &rotate, qreal &tilt);
 };
 
 #endif // MAINWINDOW_H
